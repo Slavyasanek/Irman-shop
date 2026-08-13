@@ -23,6 +23,7 @@ jobs:
             PROJECT_DIR="/home2/irmansho/public_html/wp-content/themes/irman_v2/"
             REPO_URL="ssh://git@ssh.github.com:443/Slavyasanek/Irman-shop.git"
             BRANCH="main"
+            export GIT_SSH_COMMAND="ssh -i ~/.ssh/cpanel_to_gh -p 443"
 
             git config --global --add safe.directory $PROJECT_DIR
 
