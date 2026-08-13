@@ -1,0 +1,53 @@
+name: Deploy to cPanel LIVE
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to cPanel LIVE via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            PROJECT_DIR="${{ secrets.TARGET_PATH }}"
+            REPO_URL="git@github.com:Slavyasanek/Irman-shop.git"
+            BRANCH="main"
+
+            # Create directory if it doesn't exist yet
+            mkdir -p $PROJECT_DIR
+
+            git config --global --add safe.directory $PROJECT_DIR
+
+            cd $PROJECT_DIR
+
+            if [ ! -d .git ]; then
+              echo "📦 .git folder not found. Initializing Git..."
+              git init
+              git remote add origin $REPO_URL
+              git fetch origin $BRANCH
+              git checkout -f $BRANCH
+              git branch --set-upstream-to=origin/$BRANCH $BRANCH
+            else
+              echo "🔄 .git folder exists. Ensuring correct remote URL..."
+              git remote set-url origin $REPO_URL || git remote add origin $REPO_URL
+              
+              # Fetch latest history from GitHub repo
+              git fetch origin $BRANCH
+              
+              # FORCE server files to match main
+              git reset --hard origin/$BRANCH
+              git clean -fd
+            fi
+            
+            echo "✅ Live deployment to cPanel finished!"
