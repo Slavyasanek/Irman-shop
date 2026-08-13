@@ -1,0 +1,63 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+
+.hamburger {
+    padding: 1.9vw 1.4vw;
+
+    &__line {
+        height: .2rem;
+        transform-origin: 50% 50%;
+        border-radius: 1rem;
+
+        &:first-child {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &:nth-child(2) {
+            top: 50%;
+            left: 0;
+            width: 70%;
+            transform: translateY(-50%);
+        }
+
+        &:last-child {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+// End inner
+
+.hamburger.active {
+    .hamburger {
+        &__line {
+            &:first-child {
+                top: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            &:nth-child(2) {
+                @include mixins.el-hide;
+            }
+
+            &:last-child {
+                top: 50%;
+                bottom: auto;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+        }
+    }
+    // End inner
+}
+// End ACTIVE inner
+
+@include media.M {
+    .hamburger {
+        padding: 1vw .8vw;
+    }
+}
+// End M

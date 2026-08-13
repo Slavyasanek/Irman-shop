@@ -1,0 +1,111 @@
+@use "../utils/media";
+
+.text {
+    &--menu-items {
+        font-size: var(--size_14);
+        line-height: normal;
+    }
+
+    &--btn-sm {
+        font-size: var(--size_14);
+        line-height: normal;
+    }
+
+    &--btn-m {
+        font-size: var(--size_16);
+    }
+
+    &--reg {
+        font-size: var(--size_14);
+        line-height: 1.5;
+    }
+
+    &--h4 {
+        font-size: var(--size_20);
+        line-height: 1;
+    }
+
+    &--subtitle {
+        font-size: var(--size_16);
+        line-height: 1.5;
+    }
+
+
+}
+
+.c {
+    &--black {
+        color: var(--color_black);
+    }
+
+    &--white {
+        color: var(--color_white);
+    }
+
+    &--grey-200 {
+        color: var(--color_grey-200);
+    }
+
+    &--green {
+        color: var(--color_green);
+    }
+
+    &--grey {
+        color: var(--color_grey);
+    }
+
+
+    &--accent-400 {
+        color: var(--color_accent-400);
+    }
+    
+}
+
+.t {
+    &--center {
+        text-align: center;
+    }
+
+    &--cap {
+        text-transform: capitalize;
+    }
+}
+
+.t-w {
+    &--500 {
+        font-weight: 500;
+    }
+}
+
+.ff--title {
+    font-family: var(--font__title);
+}
+
+.fs--italic {
+    font-style: italic;
+}
+
+.section-title {
+    font-size: var(--size_24);
+    line-height: 1.6;
+
+    strong, b {
+        font-weight: inherit;
+        color: var(--color_accent-400);
+    }
+}
+// End inner
+
+@include media.L {
+    .text {
+        &--menu-items {
+            font-size: var(--size_18);
+            line-height: 1.2;
+        }
+
+        &--btn-sm {
+            font-size: var(--size_16)
+        }
+    }
+}
+// End L

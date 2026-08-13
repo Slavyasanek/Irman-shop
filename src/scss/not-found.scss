@@ -1,0 +1,51 @@
+@use "./utils/media";
+@use "./utils/mixins";
+
+.not-found {
+    &__letter  {
+        font-size: var(--size_150);
+        line-height: 1.6;
+    }
+
+
+    &__img {
+        @include mixins.square(var(--size_150));
+        margin-inline: calc(-1 * var(--size_18));
+    }
+
+    &__title {
+        margin-block-start: calc(-1 * var(--size_48));
+    }
+
+    &__link {
+        padding: var(--size_12);
+    }
+}
+// End inner
+
+@include media.M {
+    .not-found {
+        &__link {
+            width: max-content;
+            padding-inline: var(--size_48);
+        }
+    }
+}
+// End M
+
+@include media.L {
+    .not-found {
+        &__letter {
+            font-size: calc(2 * var(--size_150));
+        }
+
+        &__img {
+            @include mixins.square(calc(2 * var(--size_150)));
+        }
+
+    }
+    // End inner
+}
+// End L
+
+

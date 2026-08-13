@@ -1,0 +1,23 @@
+@use "../utils/mixins";
+
+.backdrop {
+    background-color: rgba(#929292, .35);
+    z-index: 3;
+
+    @include mixins.el-hide;
+    pointer-events: none;
+
+    .cart {
+        transform: translateX(20%);
+    }
+
+    &.active {
+        @include mixins.el-show;
+        pointer-events: all;
+
+        .cart {
+            transform: translateX(0%);
+        }
+    }
+}
+// End inner

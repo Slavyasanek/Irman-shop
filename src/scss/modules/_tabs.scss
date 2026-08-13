@@ -1,0 +1,56 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.tabs {
+    margin-inline: -4vw;
+    padding-inline: 4vw;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__inner {
+        gap: var(--size_20);
+        width: fit-content;
+    }
+
+    &__item {
+        width: max-content;
+        font-size: var(--size_16);
+        white-space: nowrap;
+        line-height: 1.2;
+        padding-block: var(--size_12);
+
+        &.active {
+            pointer-events: none;
+        }
+
+    }
+
+    &__toggler {
+        height: .1rem;
+        bottom: 0;
+    }
+}
+// End inner
+
+@include media.M {
+    .tabs {
+        &__inner {
+            gap: var(--size_24);
+        }
+
+        &__item {
+            line-height: 1;
+            
+            @include mixins.hover {
+                color: var(--color_accent);
+            }
+        }
+    }
+}
+// End M

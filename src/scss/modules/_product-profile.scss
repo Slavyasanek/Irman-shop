@@ -1,0 +1,181 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+.product-profile {
+
+    &__price {
+        font-size: var(--size_20);
+        line-height: 1.2;
+    }
+
+    &__cart-btn {
+        width: 100%;
+        padding: var(--size_14);
+    }
+
+    &__content {
+        gap: var(--size_24);
+    }
+
+    &__descr {
+        p {
+            margin: 0;
+        }
+
+        ul {
+            padding-inline-start: var(--size_16);
+        }
+
+        li {
+            position: relative;
+
+            &::before {
+                @include mixins.pseudo;
+                @include mixins.push--middle;
+                left: -2.8vw;
+                @include mixins.square(.56vw);
+                background-color: currentColor;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    &__char {
+        grid-template-columns: 60% 35%;
+        gap: var(--size_16);
+
+        &:not(:last-child) {
+            margin-block-end: var(--size_8);
+        }
+    }
+
+    &__backorder {
+        gap: var(--size_16);
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &__backorder-txt {
+        span {
+            color: #BF2D2D;
+        }
+    }
+
+    &__cart-btn {
+        &.loading {
+            pointer-events: none;
+            background-color: var(--color_accent-300);
+            color: var(--color_accent-400);
+            border-color: var(--color_accent-400);
+
+            &::before {
+                content: '';
+                position: absolute;
+                inset-block-start: 50%;
+                inset-inline-start: 50%;
+                @include mixins.square(var(--size_18));
+                margin-block-start: calc(-1 * (var(--size_18) / 2));
+                margin-inline-start: calc(-1 * (var(--size_18) / 2));
+                border: .2rem solid rgba(255, 255, 255, 0.3);
+                border-top-color: #ffffff;
+                border-radius: 50%;
+                animation: btn-spin 0.6s linear infinite;
+            }
+        }
+    }
+}
+// End inner
+
+@include media.M {
+    .product-profile {
+        &__descr {
+            li::before {
+                left: -1.56vw;
+                @include mixins.square(.31vw);
+            }
+        }
+    }
+    // End inner
+}
+// End M
+
+
+@include media.L {
+    .product-profile {
+        &__title {
+            display: block;
+        }
+    
+        &__cart-btn, &__backorder-btn  {
+            width: max-content;
+            padding: var(--size_10) var(--size_64);
+        }
+    
+        &__content {
+            margin-block-start: var(--size_70);
+            gap: var(--size_32);
+        }
+    
+        &__descr {
+
+            li::before {
+                left: -1vw;
+                @include mixins.square(.21vw);
+            }
+        }
+    
+        &__char {
+            grid-template-columns: 50% 50%;
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media.XL {
+    .product-profile {
+        &__descr {
+
+            li::before {
+                left: -.7vw;
+                @include mixins.square(.14vw);
+            }
+        }
+
+
+        &__backorder-txt {
+            max-width: 70%;
+        }
+    }
+    // End inner
+}
+// End XL
+
+@include media.XXL {
+    .product-profile {
+
+    
+        &__descr {
+
+
+            li::before {
+                left: -.52vw;
+                @include mixins.square(.1vw);
+            }
+        }
+
+
+        &__backorder-txt {
+            max-width: 58%;
+        }
+
+    }
+    // End inner
+}
+// End XXL

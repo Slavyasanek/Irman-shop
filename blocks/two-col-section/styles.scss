@@ -1,0 +1,99 @@
+@use "../../src/scss/utils/media";
+@use "../../src/scss/utils/mixins";
+
+.three-col {
+    
+    &__container {
+        gap: var(--size_24);
+    }
+
+    &__left-img {
+        order: 1;
+        border-radius: 0 0 1.5em 1.5em;
+    }
+
+    &__title {
+        margin-block-end: var(--size_24);
+    }
+
+    &__txt {
+
+        h5 {
+            font-style: italic;
+            line-height: 1.5;
+            font-size: 1.2em;
+            font-weight: 500;
+            margin: 0 0 var(--size_8);
+        }
+
+        p {
+            margin: 0 0 var(--size_12);
+        }
+
+        p:last-of-type {
+            margin: 0;
+        }
+    }
+}
+// End inner
+
+@include media.M {
+    .three-col {
+    
+        &__left-img {
+            height: 62.5vw;
+        }
+    }
+    // End inner    
+}
+// End M
+
+@include media.L {
+    .three-col {
+
+        &__container {
+            flex-direction: row;
+        }
+    
+        &__img {
+            height: 100%;
+        }
+
+        &__img {
+            aspect-ratio: 1/1.2;
+        }
+    
+        &__left-img {
+            order: initial;
+            width: 42%;
+            flex-shrink: 0;
+            border-radius: 0 0 0 2.2em;
+            
+        }
+    }
+    // End inner    
+}
+// End L
+
+@include media.XL {
+    .three-col {
+        &__container {
+            display: grid;
+            grid-template-columns: 23.6% auto 23.6%;
+            align-items: center;
+        }
+    
+        &__img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+    
+        &__right-img {
+            display: block;
+            border-radius: 0 0 2.2em 0;
+        }
+    }
+    // End inner    
+}
+// End XL
+

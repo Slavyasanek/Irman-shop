@@ -1,0 +1,15 @@
+@use "../utils/media";
+
+.cart-heading {
+    padding-block: var(--size_68) var(--size_24);
+}
+// End inner
+
+
+@include media.L {
+    .cart-heading {
+        padding-block: var(--size_32) var(--size_16);
+    }
+    // End inner
+}
+// End L

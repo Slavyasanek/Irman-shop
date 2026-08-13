@@ -1,0 +1,63 @@
+@use "../utils/media";
+@use "../utils/mixins";
+.cart-items {
+    overflow-y: auto;
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color_accent);
+        border-radius: .8rem;
+    }
+
+    &::-webkit-scrollbar {
+        width: .4rem;
+    }
+
+    &__item {
+        &:not(:first-child) {
+            padding-block-start: var(--size_16);
+        }
+
+        &:not(:last-child) {
+            border-block-end: .1rem solid var(--color_grey);
+        }
+    }
+
+    &__list {
+        padding-inline-end: var(--size_16);
+    }
+
+    &__loader {
+        background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    &__empty {
+        @include mixins.square(var(--size_200));
+    }
+}
+// End inner
+
+.cart-items--type {
+    &_page {
+        .cart-items {
+            &__actions {
+                padding-block-start: var(--size_24);
+            }
+            &__action-btn {
+                padding: var(--size_12) var(--size_32);
+            }
+
+            &__list {
+                overflow-y: visible;
+            }
+        }
+    }
+}
+
+@include media.L {
+    .cart-items {
+        &__empty {
+            @include mixins.square(calc(2 * var(--size_200)));
+        }
+    }
+}
+// End L

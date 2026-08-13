@@ -1,0 +1,74 @@
+{
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "layout": {
+            "contentSize": "800px",
+            "wideSize": "1200px"
+        },
+        "color": {
+            "custom": false,
+            "customGradient": false,
+            "palette": [
+                { "slug": "black", "color": "#1B1919", "name": "Black" },
+                { "slug": "clear-white", "color": "#FFFFFF", "name": "Clear White" },
+                { "slug": "white", "color": "#F6F6F6", "name": "White" },
+                { "slug": "white-200", "color": "#F2F2F2", "name": "White 200" },
+                { "slug": "accent", "color": "#E4C9AC", "name": "Accent" },
+                { "slug": "accent-200", "color": "#FAF0E6", "name": "Accent 200" },
+                { "slug": "accent-300", "color": "#E5BF96", "name": "Accent 300" },
+                { "slug": "accent-400", "color": "#D9B083", "name": "Accent 400" },
+                { "slug": "green", "color": "#8CB788", "name": "Green" },
+                { "slug": "grey", "color": "#C6C6C6", "name": "Grey" },
+                { "slug": "grey-200", "color": "#ACACAC", "name": "Grey 200" }
+            ]
+        },
+        "typography": {
+            "customFontSize": false,
+            "fontFamilies": [
+                {
+                    "fontFamily": "\"Montserrat\", sans-serif",
+                    "name": "Montserrat",
+                    "slug": "general",
+                    "fontFace": [
+                        {
+                            "fontFamily": "Montserrat",
+                            "fontWeight": "400",
+                            "fontStyle": "normal",
+                            "src": [ "file:./src/fonts/Montserrat-Regular.ttf" ]
+                        },
+                        {
+                            "fontFamily": "Montserrat",
+                            "fontWeight": "400",
+                            "fontStyle": "italic",
+                            "src": [ "file:./src/fonts/Montserrat-Italic.ttf" ]
+                        },
+                        {
+                            "fontFamily": "Montserrat",
+                            "fontWeight": "500",
+                            "fontStyle": "normal",
+                            "src": [ "file:./src/fonts/Montserrat-Medium.ttf" ]
+                        },
+                        {
+                            "fontFamily": "Montserrat",
+                            "fontWeight": "500",
+                            "fontStyle": "italic",
+                            "src": [ "file:./src/fonts/Montserrat-MediumItalic.ttf" ]
+                        },
+                        {
+                            "fontFamily": "Montserrat",
+                            "fontWeight": "600",
+                            "fontStyle": "normal",
+                            "src": [ "file:./src/fonts/Montserrat-SemiBold.ttf" ]
+                        }
+                    ]
+                },
+                {
+                    "fontFamily": "\"Segoe Script\", sans-serif",
+                    "slug": "title",
+                    "name": "Title (Segoe Script)"
+                }
+            ]
+        }
+    }
+}

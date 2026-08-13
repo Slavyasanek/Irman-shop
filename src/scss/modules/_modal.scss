@@ -1,0 +1,77 @@
+@use "../utils/mixins";
+@use "../utils/media";
+
+.modal {
+    border-radius: 2.4rem;
+    padding: var(--size_56) var(--size_16) 0;
+    max-height: 100%;
+    overflow-y: auto;
+
+    &__btns {
+        gap: var(--size_16); 
+        padding-block: var(--size_20);
+        inset-block-end: 0;
+        inset-inline-start: 0;
+    }
+
+    &__img {
+        border-radius: 1.5em;
+    }
+}
+// End inner
+
+@include media.M {
+    .modal {
+        width: 56.25vw;
+    }
+    // End inner
+}
+// End M
+
+@include media.L {
+    .modal {
+        padding: var(--size_48) var(--size_110);
+        width: 75.77vw;
+
+        &__close-btn {
+            inset-block-start: var(--size_24);
+            inset-inline-end: var(--size_24);
+        }
+    
+        &__title {
+            text-align: center;
+        }
+  
+    
+        &__btns {
+            flex-direction: row;
+        }
+   
+        &__backorder-btn {
+            flex-grow: 1;
+        }
+        &__content {
+            align-items: center;
+            gap: var(--size_32);
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media.XL {
+    .modal {
+        width: 51.18vw;
+
+    }
+    // End inner
+}
+// End XL
+
+@include media.XXL {
+    .modal {
+        white-space: 38.4vw;
+    }
+}
+// End XXL

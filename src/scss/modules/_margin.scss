@@ -1,0 +1,37 @@
+@use "../utils/media";
+
+$margin-sizes: 8, 10, 12, 16, 20, 24, 32,  40, 48;
+
+.mb {
+    @each $size in $margin-sizes {
+        &--#{$size} {
+            margin-block-end: var(--size_#{$size});
+        }
+    }
+}
+
+.mt {
+    @each $size in $margin-sizes {
+        &--#{$size} {
+            margin-block-start: var(--size_#{$size});
+        }
+    }
+}
+
+@include media.L {
+    .l-mb {
+        @each $size in $margin-sizes {
+            &--#{$size} {
+                margin-block-end: var(--size_#{$size});
+            }
+        }
+    }
+
+    .l-mt {
+        @each $size in $margin-sizes {
+            &--#{$size} {
+                margin-block-start: var(--size_#{$size});
+            }
+        }
+    }
+}

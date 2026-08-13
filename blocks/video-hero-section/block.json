@@ -1,0 +1,23 @@
+{
+    "name": "acf/video-hero-section",
+    "title": "Герой  сторінки (відео або зображення)",
+    "category": "irman",
+    "apiVersion": 3,
+    "keywords": [
+        "заголовок"
+    ],
+    "icon": "slides",
+    "style": "file:../../build/css/block-video-hero-section.css",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

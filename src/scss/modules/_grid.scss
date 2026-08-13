@@ -1,0 +1,44 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+
+.grid {
+    display: grid;
+}
+
+.grid--col {
+    &_2-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.grid--gap {
+    &_16-24 {
+        grid-gap: var(--size_16);
+    }
+}
+
+@include media.M {
+    .grid--col {
+        &_2-4 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+}
+// End M
+
+@include media.L {
+    .grid--col {
+        &_2-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .grid--gap {
+        &_16-24 {
+            grid-gap: var(--size_24);
+        }
+    }
+}
+// End L

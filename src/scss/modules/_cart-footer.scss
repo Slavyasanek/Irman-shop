@@ -1,0 +1,46 @@
+@use "../utils/media";
+
+.cart-footer {
+    gap: var(--size_48);
+
+    &__btns {
+        gap: var(--size_24);
+    }
+
+    &__btn {
+        padding: var(--size_15);
+    }
+}
+// End inner
+
+.cart-footer--type {
+    &_page {
+        gap: var(--size_32);
+
+        input {
+            accent-color: var(--color_accent-400);
+        }
+
+        th {
+            text-align: start;
+        }
+    }
+}
+
+@include media.L {
+    .cart-footer {
+        gap: var(--size_80);
+
+        &__btn {
+            font-size: var(--size_18);
+        }
+    }
+    // End inner
+
+    .cart-footer--type {
+        &_page {
+            margin: 0;
+        }
+    }
+}
+// End L

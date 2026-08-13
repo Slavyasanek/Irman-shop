@@ -1,0 +1,1 @@
+var e=()=>document.body.classList.add(`lock`),t=()=>document.body.classList.remove(`lock`),n=(e=!1)=>{e&&document.querySelector(`.preloader`).classList.add(`active`),e||document.querySelector(`.preloader`).classList.remove(`active`)};export{t as n,n as r,e as t};

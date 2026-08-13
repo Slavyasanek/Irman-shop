@@ -1,0 +1,19 @@
+{
+    "name": "acf/text-content-section",
+    "title": "Текстовий контент",
+    "category": "irman",
+    "keywords": ["текст", "контент", "опис"],
+    "icon": "editor-alignleft",
+    "apiVersion": 3,
+    "style": "file:../../build/css/block-text-content-section.css",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

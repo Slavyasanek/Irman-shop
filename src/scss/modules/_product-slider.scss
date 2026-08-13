@@ -1,0 +1,111 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.product-slider {
+    
+    &__main {
+        // max-width: 64.44vw;
+        margin-inline: -5vw;
+    }
+
+    &__img-link {
+        aspect-ratio: 232 / 320;
+    }
+
+    &__thumbnails {
+        pointer-events: none;
+    }
+
+    &__main-slide {
+        flex: 100% 0 0;
+    }
+
+    // &__main-track {
+    //     gap: var(--size_12);
+    // }
+}
+// End inner
+
+@include media.L {
+    .product-slider {
+
+        &__main {
+            max-width: 100%;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+    
+        &__thumbnails {
+            display: block;
+            pointer-events: all;
+        }
+    
+        &__img-link {
+            border-radius: 1em;
+        }
+        
+        &__main-track {
+            gap: var(--size_16);
+        }
+
+        &__thumb-track {
+            gap: var(--size_8);
+        }
+
+        &__thumbnail {
+            border-width: .3rem;
+            border-style: solid;
+            border-color: transparent;
+            cursor: pointer;
+            aspect-ratio: 1 / 1.3;
+            border-radius: 1em;
+            flex: calc((100% - 3 * var(--size_8)) / 4) 0 0;
+
+            &.is-active {
+                border-color: var(--color_accent);   
+            }
+        }
+
+        &__arrow {
+            display: block;
+
+            inset-block-end: 2%;
+            color: var(--color_accent-200);
+            &--prev {
+                inset-inline-start: 2%;
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            &--next {
+                inset-inline-end: 2%;
+            }
+
+            &:disabled {
+                pointer-events: none;
+                opacity: .6;
+                cursor: auto;
+            }
+
+            @include mixins.hover {
+                color: var(--color_white);
+            }
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media.XL {
+    .product-slider {
+        &__main-slide {
+            flex-basis: calc((100% - var(--size_16)) / 2);
+        }
+
+        &__thumbnail {
+            flex-basis: calc((100% - 4 * var(--size_8)) / 5);
+        }
+    }
+}

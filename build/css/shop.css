@@ -1,0 +1,1 @@
+.catalogue__track{gap:var(--size_24)}.catalogue__slide{flex:0 0 80%}@media screen and (width>=640px){.catalogue__slide{flex:0 0 45%}}@media screen and (width>=960px){.catalogue__slide{flex-basis:calc((100% - 3 * var(--size_24)) / 4)}}.catalogue--shop .catalogue__tabs{padding-block-end:var(--size_12);inset-block-start:var(--header-height)}

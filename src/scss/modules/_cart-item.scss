@@ -1,0 +1,62 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.cart-item {
+    gap: var(--size_12);
+    padding-block-end: var(--size_16);
+
+    &__img {
+        border-radius: 1.2rem;
+        width: var(--size_72);
+        height: var(--size_100);
+    }
+
+    &__delete-btn {
+        font-size: var(--size_12);
+        font-weight: 500;
+
+        &::after {
+            inset-block-end: 0;
+        }
+    }
+}
+// End inner
+
+.cart-item--type {
+    &_page {
+        td {
+            border-block-end: .1rem solid var(--color_grey);
+            padding-block-end: var(--size_16);
+        }
+    }
+}
+
+@include media.L {
+    .cart-item {
+        gap: var(--size_24);
+        padding-block-end: var(--size_32);
+
+        &__img {
+            width: var(--size_144);
+            height: var(--size_200);
+        }
+    
+        &__title {
+            @include mixins.hover {
+                color: var(--color_accent-300);
+            }
+        }
+
+        &__row {
+            flex-direction: row;
+            justify-content: space-between;
+            gap: var(--size_8);
+        }
+
+        &__quant-block {
+            height: max-content;
+        }
+    }
+    // End inner
+}
+// End L

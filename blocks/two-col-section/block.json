@@ -1,0 +1,24 @@
+{
+    "name": "acf/two-col-section",
+    "title": "Текст між 2 зображеннями",
+    "category": "irman",
+    "keywords": [
+        "зображення",
+        "текст"
+    ],
+    "icon": "layout",
+    "apiVersion": 3,
+    "style": "file:../../build/css/block-two-col-section.css",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

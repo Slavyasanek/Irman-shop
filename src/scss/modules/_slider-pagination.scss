@@ -1,0 +1,42 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.slider-pagination {
+
+    .embla__dot {
+        background-color: #C6C6C6;
+        @include mixins.square(var(--size_8));
+        transition: var(--transition);
+        opacity: 1;
+        border-radius: .5em;
+        margin-inline: .56vw;
+        border: none;
+        outline: none;
+
+        &.is-active {
+            background-color: var(--color_accent);
+            width: var(--size_20);
+        }
+    }
+
+}
+// End inner
+
+@include media.M {
+    .slider-pagination {
+        margin-block-start: 2.5vw;
+
+        .splide__pagination__page {
+            margin-inline: .31vw;
+        }
+    }
+}
+// End M
+
+@include media.L {
+    .slider-pagination {
+        display: none;
+        pointer-events: none;
+    }
+}
+// end L

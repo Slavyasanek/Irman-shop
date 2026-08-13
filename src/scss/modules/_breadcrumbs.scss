@@ -1,0 +1,48 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.breadcrumbs + section, .breadcrumbs + article {
+    padding-block-start: 0;
+}
+
+.breadcrumbs {
+    padding-block: var(--size_14);
+
+    &__list {
+        gap: var(--size_24);
+    }
+
+    &__item {
+
+        &:not(:first-child) {
+            position: relative;
+
+            &::before {
+                @include mixins.pseudo;
+                background-image: url("data:image/svg+xml,%3Csvg width='16' height='17' viewBox='0 0 16 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.7827 9.16602H2.66602V7.83268H10.7827L7.04935 4.09935L7.99935 3.16602L13.3327 8.49935L7.99935 13.8327L7.04935 12.8993L10.7827 9.16602Z' fill='%231B1919'/%3E%3C/svg%3E%0A");
+                @include mixins.push--middle;
+                left:calc(-1 * var(--size_22));
+                @include mixins.square(var(--size_16));
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+}
+// End inner
+
+@include media.L {
+    .breadcrumbs {
+        &__item {
+
+            &--link {
+                @include mixins.hover {
+                    color: var(--color_accent);
+                }
+            }
+        }
+    }
+    // End inner
+}
+// End L

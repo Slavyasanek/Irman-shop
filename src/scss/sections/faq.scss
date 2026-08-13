@@ -1,0 +1,51 @@
+.faq {
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 2.22vw;
+    }
+}
+// End inner
+
+@include media-M {
+    .faq {
+        &__list {
+            gap: 1.25vw;
+        }
+    }
+    // End inner
+}
+// End M
+
+@include media-L {
+    .faq {
+        &__list {
+            gap: .83vw;
+            max-width: 65.4vw;
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media-XL {
+    .faq {
+        &__list {
+            gap: .56vw;
+            max-width: 43.6vw;
+        }
+    }
+    // End inner
+}
+// End XL
+
+// @include media-XXL {
+//     .faq {
+
+//         &__list {
+//             gap: .42vw;
+//         }
+//     }
+//     // End inner
+// }
+// // End XXL

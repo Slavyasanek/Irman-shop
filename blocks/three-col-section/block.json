@@ -1,0 +1,22 @@
+{
+    "name": "acf/three-col-section",
+    "title": "Текст з 3 зображеннями",
+    "category": "irman",
+    "keywords": [
+        "зображення",
+        "текст"
+    ],
+    "icon": "layout",
+    "apiVersion": 3,
+    "style": "file:../../build/css/block-three-col-section.css",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

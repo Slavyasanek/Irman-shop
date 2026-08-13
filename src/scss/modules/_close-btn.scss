@@ -1,0 +1,15 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.close-btn {
+    fill: var(--color_grey);
+    inset-block-start: var(--size_16);
+    inset-inline-end: var(--size_16);
+
+    @include mixins.hover {
+        svg {
+            fill: var(--color_accent);
+        }
+    }
+}
+// End inner

@@ -1,0 +1,22 @@
+.bg {
+    &--white-200 {
+        background-color: var(--color_white-200);
+    }
+
+    &--black {
+        background-color: var(--color_black);
+    }
+
+    &--accent-200 {
+        background-color: var(--color_accent-200);
+    }
+
+    &--white {
+        background-color: var(--color_white);
+    }
+
+    &--accent {
+        background-color: var(--color_accent);
+    }
+}
+// End inner

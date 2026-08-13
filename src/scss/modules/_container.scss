@@ -1,0 +1,12 @@
+@use "../utils/media";
+
+.container, .cart-page .woocommerce {
+    margin-inline: auto;
+    width: 91.11vw;
+}
+
+@include media.L {
+    .container, .cart-page .woocommerce {
+        width: 88.9vw;
+    }
+}

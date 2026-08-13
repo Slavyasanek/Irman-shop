@@ -1,0 +1,77 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.cart {
+    padding-inline: var(--size_16);
+
+    &__footer {
+        inset-block-end: 0;
+        inset-inline-start: 0;
+        padding-block: var(--size_32) var(--size_22);
+    }
+}
+// End inner
+
+.cart-page {
+    .woocommerce {
+        padding-block-end: var(--size_72);
+    }
+
+    .cart {
+        &__footer {
+            padding: var(--size_24);
+            border-radius: 1.5em;
+        }
+    }
+}
+
+@include media.M {
+    .cart {
+        inset-inline-end: 0;
+        inset-inline-start: auto;
+        width: 70vw;
+    }
+    // End inner
+}
+// End M
+
+@include media.L {
+    .cart {
+        padding-inline: var(--size_24);
+        width: 64.7vw;
+
+
+        &__footer {
+            padding-block: var(--size_48);
+        }
+    }
+    // End inner
+
+    .cart-page {
+        .woocommerce {
+            display: flex;
+            gap: var(--size_32);
+
+            .cart-items {
+                width: 50%;
+            }
+        }
+    }
+}
+// End L
+
+@include media.XL {
+    .cart {
+        width: 43.2vw;
+    }
+    // End inner
+}
+// End XL
+
+@include media.XXL {
+    .cart {
+        width: 32.4vw;
+    }
+    // End inner
+}
+// End XXL

@@ -1,0 +1,138 @@
+@use "../../src/scss/utils/media";
+@use "../../src/scss/utils/mixins";
+
+.three-data-col {
+
+    &__container, &__small-img-txt, &__text-img {
+        gap: var(--size_16)
+    }
+
+    p {
+        margin: 0;
+    }
+
+    &__descr {
+        order: 1;
+        margin-block-start: var(--size_16);
+    }
+
+    &__title {
+        margin-block-end: var(--size_24);
+    }
+
+    &__img {
+
+        &--main {
+            border-radius: 1.5em 1.5em 0 0;
+        }
+    }
+}
+// End inner
+
+@include media.M {
+    .three-data-col {
+        &__main-block, &__small-img-txt, &__text-img  {
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__descr {
+            margin: 0 0 0 var(--size_16);
+        }
+
+        &__text-img  {
+            .three-data-col__img {
+                order: 2;
+            }
+
+            .three-data-col__txt {
+                order: 1;
+            }
+        }
+
+        &__title {
+            grid-column: span 2;
+        }
+
+    }
+    // End inner
+}
+// End M
+
+@include media.L {
+    .three-data-col {
+        
+        &__container {
+            display: grid;
+            grid-template-columns: .45fr .358fr .424fr;
+            // flex-direction: row;
+            gap: var(--size_24);
+        }
+
+        &__small-img-txt, &__text-img, &__main-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__small-img-txt, &__text-img {
+            gap: var(--size_24);
+        }
+    
+        &__main-block {
+            align-items: flex-start;
+            flex-shrink: 0;
+        }
+
+        &__text-img {
+            flex-direction: column-reverse;
+        }
+    
+        &__descr {
+            order: initial;
+            margin-inline-start: 0;
+            margin-block-end: var(--size_32)
+        }
+
+        &__img {
+            aspect-ratio: 358 / 477;
+
+            &--main {
+                border-radius: 1.5em 0 0 0;
+                aspect-ratio: 450 / 606;
+            }
+
+            &--small {
+                border-radius:  0 1.5em 0 0;
+                aspect-ratio: 424 / 307;
+            }
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media.XL {
+    .three-data-col {
+
+        &__container {
+            align-items: flex-end;
+        }
+        
+
+        &__small-img-txt, &__text-img, &__img--main {
+            height: 42vw;
+        }
+    }
+    // End inner
+}
+// End XL
+
+
+@include media.XXL {
+    .three-data-col {
+        &__small-img-txt, &__text-img, &__img--main {
+            height: 35vw;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{   
+    "name": "irman/cleantheme",
+    "description": "A modern block-based theme",
+    "require": {
+        "stoutlogic/acf-builder": "^1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "CleanTheme\\": "inc/"
+        }
+    }
+}

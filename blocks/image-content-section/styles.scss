@@ -1,0 +1,67 @@
+@use "../../src/scss/utils/media";
+
+.image-content {
+    &__container {
+        gap: var(--size_24);
+    }
+
+    &__text {
+        p {
+            margin: 0;
+
+            &:not(:last-child) {
+                margin-block-end: 1em;
+            }
+        }
+    }
+
+    &__img {
+        border-radius: 1.5em;
+    }
+
+    &__btn {
+        padding: var(--size_15);
+    }
+}
+// End inner
+
+@include media.L {
+    .image-content {
+        &__container {
+           flex-direction: row;
+           align-items: center;
+           width: 80vw;
+           gap: var(--size_64);
+
+           &--dir {
+                &_left {
+                    flex-direction: row-reverse;
+                }
+           }
+        }
+
+        &__img {
+            flex-basis: 45%;
+        }
+        &__btn {
+            width: max-content;
+            padding-inline: var(--size_32);
+        }
+    }
+}
+
+@include media.XL {
+    .image-content {
+        &__container {
+            width: 65vw;
+        }
+    }
+}
+
+@include media.XXL {
+    .image-content {
+        &__container {
+            width: 55vw;
+        }
+    }
+}

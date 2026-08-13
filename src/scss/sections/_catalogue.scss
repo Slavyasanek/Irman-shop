@@ -1,0 +1,9 @@
+.catalogue--shop {
+    .catalogue {
+        &__tabs {
+            inset-block-start: var(--header-height);
+            padding-block-end: var(--size_12);
+
+        }
+    }
+}

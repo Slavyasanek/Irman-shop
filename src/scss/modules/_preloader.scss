@@ -1,0 +1,58 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+@keyframes loader {
+    100% {
+        left: calc(100% + 2rem)
+    }
+}
+
+  @keyframes ballbns {
+    0% {  
+      left: 0; 
+      transform: translateX(-100%) rotate(0deg);
+      border-radius: 0; 
+      
+    }
+    100% {  
+      left: 100%; 
+      transform: translateX(0%) rotate(360deg); 
+      border-radius: 50%;
+    }
+  }
+
+.preloader {
+
+    &__inner {
+        
+        height: 15vw;
+        width: 55.56vw;
+        box-sizing: border-box;
+        @include mixins.push--center-middle;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: .4rem;
+            @include mixins.square(8.9vw);
+            background: var(--color_accent-200);
+            animation: ballbns 2s ease-in infinite;
+        }
+    }
+}
+// End inner
+
+@include media.M {
+    .preloader {
+        &__inner {
+            height: 5.4rem;
+            width: 20rem;
+
+            &::before {
+                @include mixins.square(3.2rem);
+            }
+        }
+    }
+}
+// End M

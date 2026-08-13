@@ -1,0 +1,116 @@
+@use "../utils/mixins";
+@use "../utils/media";
+
+.header {
+    padding-block: var(--size_18);
+    inset-block-start: 0;
+    inset-inline-start: 0;
+
+    &__container {
+        gap: var(--size_12);
+    }
+
+    &__logo {
+        width: var(--size_68);
+        height: var(--size_32);
+    }
+
+    &__left-side, &__right-side {
+        flex-basis: 30%;
+        gap: var(--size_10);
+    }
+
+
+}
+// End inner
+
+
+@include media.L {
+    .header {
+        padding-block: var(--size_24);
+
+        &__menu {
+            display: block;
+
+            ul {
+                gap: var(--size_42);
+            }
+            
+            a {
+                color: currentColor;
+
+                @include mixins.hover {
+                    color: var(--color_accent);
+                }
+            }
+        }
+    
+        &__logo {
+            width: 12.3vw;
+            height: 5.6vw;
+        }
+
+        &__right-side {
+            gap: 2vw;
+        }
+
+        &__right-side, &__left-side {
+            flex-basis: 40%;
+        }
+    
+        &__order-btn--desk {
+            padding: var(--size_10) var(--size_16);
+            display: flex;
+            gap: var(--size_16);
+            border-radius: 1.6em;
+        }
+
+        &__order-btn--mob {
+            display: none;
+        }
+    
+        &__cart-btn {
+
+            @include mixins.hover {
+                svg {
+                    fill: var(--color_accent);
+                }
+            }
+        }
+    }
+    // End inner    
+}
+// End L
+
+@include media.XL {
+    .header {
+
+        &__logo {
+            width: 8.2vw;
+            height: 3.75vw;
+        }
+
+        &__right-side {
+            gap: var(--size_60);
+        }
+    
+        &__order-btn {
+            padding-inline: var(--size_42);
+        }
+    
+    }
+    // End inner    
+}
+// End XL
+
+@include media.XXL {
+    .header {
+    
+        &__logo {
+            width: 6.15vw;
+            height: 2.8vw;
+        }
+    }
+    // End inner    
+}
+// End XXL

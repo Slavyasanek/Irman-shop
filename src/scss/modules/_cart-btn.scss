@@ -1,0 +1,66 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.cart-btn {
+    position: relative;
+    &::after {
+        content: attr(data-cart);
+        position: absolute;
+        @include mixins.square(var(--size_14));
+        border-radius: 50%;
+        top: -0.56vw;
+        right: -1.4vw;
+        background-color: var(--color_accent-400);
+        color: var(--color_black);
+        font-size: var(--size_10);
+    }
+}
+// End inner
+
+@include media.M {
+    .cart-btn {
+        &::after {
+            top: -0.31vw;
+            right: -0.8vw;
+        }
+    }
+    // End inner
+}
+// End M
+
+@include media.L {
+    .cart-btn {
+        &::after {
+            top: -0.21vw;
+            right: -0.52vw;
+        }
+
+        @include mixins.hover {
+            color: var(--color_accent-400);
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media.XL {
+    .cart-btn {
+        &::after {
+            top: -0.14vw;
+            right: -0.35vw;
+        }
+    }
+    // End inner
+}
+// End XL
+
+@include media.XXL {
+    .cart-btn {
+        &::after {
+            top: -0.1vw;
+            right: -0.26vw;
+        }
+    }
+    // End inner
+}
+// End XXL

@@ -1,0 +1,95 @@
+@use "../../src/scss/utils/media";
+@use "../../src/scss/utils/mixins";
+
+.video-content {
+    background-color: var(--color_clear-white);
+
+    &__container {
+        gap: var(--size_24);
+    }
+
+    &__text {
+        p {
+            margin: 0;
+
+            &:not(:last-child) {
+                margin-block-end: 1em;
+            }
+        }
+    }
+
+    &__video {
+        border-radius: 1.5em;
+
+    }
+
+    &__btn {
+        padding: var(--size_15) var(--size_32);
+    }
+
+    &__flower {
+        inset-inline-end: 0;
+        inset-block-start: 0;
+    }
+}
+
+@include media.L {
+    .video-content {
+        background-color: transparent;
+
+        &__container {
+           flex-direction: row;
+           align-items: center;
+           width: 80vw;
+           gap: var(--size_64);
+           background-color: var(--color_clear-white);
+            padding: var(--size_24);
+            border-radius: 2.4em;
+
+           &--dir {
+                &_left {
+                    flex-direction: row-reverse;
+                }
+           }
+        }
+
+        &__video {
+            flex-basis: 45%;
+        }
+
+        &__btn {
+            width: max-content;
+        }
+
+        &__flower {
+            inset-inline-start: -5%;
+            inset-block-start: -5%;
+            @include mixins.square(var(--size_100));
+        }
+    }
+}
+// End L
+
+@include media.XL {
+    .video-content {
+        &__container {
+            width: 70vw;
+        }
+
+        &__video {
+            flex-basis: 35%;
+        }
+
+        &__flower {
+            @include mixins.square(var(--size_144));
+        }
+    }
+}
+
+@include media.XL {
+    .video-content {
+        &__container {
+            width: 55vw;
+        }
+    }
+}

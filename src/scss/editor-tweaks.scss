@@ -1,0 +1,128 @@
+@use "../scss/utils/media";
+
+
+:root {
+    --size_8: 8px;
+    --size_10: 10px;
+    --size_12: 12px;
+    --size_14: 14px;
+    --size_15: 15px;
+    --size_16: 16px;
+    --size_18: 18px;
+    --size_20: 20px;
+    --size_22: 22px;
+    --size_24: 24px;
+    --size_26: 26px;
+    --size_28: 28px;
+    --size_30: 30px;
+    --size_32: 32px;
+    --size_34: 34px;
+    --size_36: 36px;
+    --size_38: 38px;
+    --size_40: 40px;
+    --size_41: 41px;
+    --size_42: 42px;
+    --size_44: 44px;
+    --size_45: 45px;
+    --size_48: 48px;
+    --size_50: 50px;
+    --size_52: 52px;
+    --size_55: 55px;
+    --size_56: 56px;
+    --size_60: 60px;
+    --size_64: 64px;
+    --size_68: 68px;
+    --size_70: 70px;
+    --size_72: 72px;
+    --size_75: 75px;
+    --size_80: 80px;
+    --size_82: 82px;
+    --size_86: 86px;
+    --size_88: 88px;
+    --size_90: 90px;
+    --size_94: 94px;
+    --size_96: 96px;
+    --size_100: 100px;
+    --size_106: 106px;
+    --size_110: 110px;
+    --size_112: 112px;
+    --size_120: 120px;
+    --size_126: 126px;
+    --size_130: 130px;
+    --size_132: 132px;
+    --size_144: 144px;
+    --size_150: 150px;
+    --size_200: 200px;
+}
+
+body {
+    font-size: 14px;
+}
+
+h1, h2, h3, h4, .btn {
+    &.wp-block:not(.acf-block-component) {
+        text-transform: none;
+        margin-block: 0 1em;
+    }
+}
+
+p.wp-block:not(.acf-block-component) {
+    margin-block: 1em;
+}
+
+h1.wp-block:not(.acf-block-component) {
+    font-size: 56px;
+}
+
+h2.wp-block:not(.acf-block-component) {
+    font-size: 48px;
+}
+
+h3.wp-block:not(.acf-block-component) {
+    font-size: 32px;
+}
+
+h4.wp-block:not(.acf-block-component) {
+    font-size:28px;
+}
+
+h5.wp-block:not(.acf-block-component) {
+    font-size: 24px;
+}
+
+h6.wp-block:not(.acf-block-component) {
+    font-size: 18px;
+}
+
+ol.wp-block:not(.acf-block-component), 
+ol.wp-block:not(.acf-block-component) > li {
+    list-style-type: decimal;
+}
+
+ul.wp-block:not(.acf-block-component), 
+ul.wp-block:not(.acf-block-component) > li {
+    list-style-type: disc;
+}
+
+.block-editor-block-list__layout.is-root-container.wp-block-post-content > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+    max-width: calc(100% - 40px);
+}
+
+.container {
+    width: calc(100% - 4rem);
+}
+
+img.cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@import "../../blocks/hero-section/styles.scss";
+@import "../../blocks/video-hero-section/styles.scss";
+@import "../../blocks/products-section/styles.scss";
+@import "../../blocks/three-col-section/styles.scss";
+@import "../../blocks/two-col-section/styles.scss";
+@import "../../blocks/faq-section/styles.scss";
+@import "../../blocks/text-content-section/styles.scss";
+@import "../../blocks/image-content-section/styles.scss";

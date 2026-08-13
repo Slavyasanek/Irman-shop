@@ -1,0 +1,24 @@
+{
+    "name": "acf/hero-section",
+    "title": "Герой сторінки",
+    "category": "irman",
+    "keywords": [
+        "заголовок"
+    ],
+    "icon": "slides",
+    "apiVersion": 3,
+    "style": "file:../../build/css/block-hero-section.css",
+    "script": "file:../../build/js/hero-section-js.js",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

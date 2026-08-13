@@ -1,0 +1,91 @@
+@use "../../src/scss/utils/media";
+
+.hero-video {
+    height: calc(100vh - var(--header-height));
+
+    &__mobile + &__desktop {
+        display: none;
+    }
+
+    &__overlay {
+        // background: rgba(255, 255, 255, 0.35);
+        background-color: rgba(3, 3, 3, 0.75);
+    }
+
+    &__title {
+        font-weight: 400;
+        line-height: 1.2;
+        font-size: var(--size_30);
+
+        p {
+            margin: 0;
+        }
+
+        strong, b {
+            font-weight: 400;
+            color: var(--color_accent-400);
+        }
+
+        em {
+            background: white;
+            border-radius: .8em;
+            padding-inline: .5em;
+        }
+    }
+
+    &__btn {
+        padding: var(--size_12);
+    }
+
+    &__actions {
+        gap: var(--size_24);
+    }
+}
+
+.hero-video--h {
+    &_70 {
+        height: calc(70vh - var(--header-height));
+    }
+
+    &_50 {
+        height: calc(50vh - var(--header-height));
+    }
+}
+// End by HEIGHT
+
+@include media.M {
+    .hero-video {
+        &__actions {
+            flex-direction: row;
+        }
+    }
+}
+
+@include media.L {
+    .hero-video {
+
+        &__mobile + &__desktop {
+            display: block;
+        }
+
+        &__title, &__subtitle {
+            text-align: center;
+        }
+
+        &__title {
+            font-size: var(--size_64);
+        }
+
+        &__actions {
+            justify-content: center;
+        }
+
+        &__btn {
+            width: max-content;
+            padding-inline: var(--size_64);
+        }
+        
+
+    }
+}
+// End L

@@ -1,0 +1,19 @@
+{
+    "name": "acf/faq-section",
+    "title": "Часті питання",
+    "category": "irman",
+    "keywords": ["faq", "питання", "відповіді"],
+    "icon": "editor-help",
+    "apiVersion": 3,
+    "style": "file:../../build/css/block-faq-section.css",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": { "_is_inserter_preview": true }
+        }
+    }
+}

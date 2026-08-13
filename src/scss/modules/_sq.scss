@@ -1,0 +1,11 @@
+@use "../utils/mixins";
+
+$sizes: 12, 24, 32, 64;
+
+.sq {
+    @each $size in $sizes {
+        &--#{$size} {
+            @include mixins.square(var(--size_#{$size}));
+        }
+    }
+}

@@ -1,0 +1,133 @@
+@use "../../src/scss/utils/media";
+@use "../../src/scss/utils/mixins";
+
+.hero {
+    height: calc(100vh - var(--header-height));
+    min-height: 150vw;
+
+    p {
+        margin: 0;
+    }
+
+    &__title {
+        font-weight: 400;
+        line-height: 0.8;
+        font-size: var(--size_30);
+
+        strong, b {
+            font-weight: 400;
+            color: var(--color_accent-400);
+        }
+    }
+
+    &__btn {
+        padding: var(--size_12);
+    }
+
+    &__bg {
+        border-radius: 0 0 1.5em 1.5em;
+    }
+
+    &__overlay {
+        background: rgba(3, 3, 3, 0.75);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+}
+// End inner
+
+@include media.M {
+    .hero {
+        min-height: 100vw;
+
+        &__title, &__subtitle {
+            text-align: center;
+        }
+
+        &__btn {
+            max-width: 46.8vw;
+            margin-inline: auto;
+        }
+    }
+    // End inner
+}
+// End M
+
+@include media.L {
+    .hero {
+        min-height: 50vw;
+
+        &__container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--size_24);
+        }
+
+        &__title, &__subtitle {
+            color: var(--color_black);
+            text-align: start;
+            overflow: hidden;
+        }
+    
+        &__title {
+            font-size: var(--size_64);
+            line-height: 1;
+        }
+    
+        &__subtitle {
+            font-size: var(--size_20);
+            line-height: 1.5;
+        }
+    
+        &__btn {
+            width: max-content;
+            padding: var(--size_15) var(--size_72);
+            margin-inline: 0;
+        }
+
+        &__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            font-size: var(--size_32);
+        }
+    
+        &__img {
+            &:nth-child(3) {
+                border-top-right-radius: 1.8em;
+            }
+
+            &:nth-child(7) {
+                border-bottom-left-radius: 1.8em;
+            }
+        }
+    }
+    // End inner
+}
+// End L
+
+@include media.XL {
+    .hero {
+        height: calc(100vh - 7vw);
+        min-height: 34.7vw;
+        min-height: 51.94vw;
+
+        &__title {
+            font-size: var(--size_72);
+        }
+   
+    }
+    // End inner
+}
+// End XL
+
+@include media.XXL {
+    .hero {
+        height: calc(100vh - 5.3vw);
+        min-height: 38.96vw;
+    
+        &__title {
+            font-size: var(--size_82);
+        }
+    }
+    // End inner
+}
+// End XXL

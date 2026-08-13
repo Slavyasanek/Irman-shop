@@ -1,0 +1,124 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.footer {
+    padding-block: var(--size_24);
+
+    &__container {
+        gap: var(--size_24);
+    }
+
+    &__menu {
+        a {
+            display: block;
+            padding-block: var(--size_10);
+        }
+    }
+
+    &__block {
+        width: 48%;
+    }
+
+    &__socials {
+        gap: var(--size_20);
+    }
+}
+// End inner
+
+@include media.M {
+    .footer {
+        &__container {
+            flex-direction: row;
+        }
+
+        &__block {
+            width: auto;
+        }
+    }
+    // End inner    
+}
+// End M
+
+@include media.L {
+    .footer {
+        padding-block: var(--size_30);
+
+        &__container {
+            gap: 22.6vw;
+            justify-content: center;
+        }
+
+        &__block {
+            min-width: 11.6vw;
+            margin: 0;
+        }
+    
+        &__subtitle {
+            font-size: var(--size_16);
+            margin-block-end: var(--size_12);
+        }
+
+        &__social {
+            @include mixins.hover {
+                color: var(--color_accent-300);
+            }
+        }
+    
+        &__menu {
+            ul {
+                gap: .42vw;
+            }
+
+            a {
+                padding-block: 0;
+
+                @include mixins.hover {
+                    color: var(--color_accent-300);
+                }
+            }
+        }
+
+        &__tel {
+            @include mixins.hover {
+                color: var(--color_accent-300);
+            }
+        }
+    
+        &__socials {
+            margin-block-start: var(--size_8);
+            gap: var(--size_8);
+        }
+
+        &__copyright {
+            margin-block-start: var(--size_32);
+        }
+    
+    }
+    // End inner    
+}
+// End L
+
+@include media.XL {
+    .footer {
+        &__menu {
+            ul {
+                gap: .28vw;
+            }
+        }
+    }
+    // End inner    
+}
+// End XL
+
+@include media.XXL {
+    .footer {
+    
+        &__menu {
+            ul {
+                gap: .21vw;
+            }
+        }
+    }
+    // End inner    
+}
+// End XXL

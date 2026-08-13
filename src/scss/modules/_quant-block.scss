@@ -1,0 +1,24 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.quant-block {
+    gap: .2rem;
+
+    &__btn, &__value {
+        border-radius: .4rem;
+        border: .1rem solid var(--color_grey);   
+    }
+
+    &__btn {
+        @include mixins.hover {
+            border-color: var(--color_accent);
+            color: var(--color_accent);
+        }
+
+        &:disabled {
+            pointer-events: none;
+            opacity: .3;
+        }
+    }
+}
+// End inner

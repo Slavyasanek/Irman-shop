@@ -1,0 +1,29 @@
+@use "../../src/scss/utils/media";
+@use "../../src/scss/utils/mixins";
+
+.catalogue {
+    &__track {
+        gap: var(--size_24);
+    }
+
+    &__slide {
+        flex: 80% 0 0;
+    }
+}
+// End inner
+
+@include media.M {
+    .catalogue {
+        &__slide {
+            flex: 45% 0 0;
+        }
+    }
+}
+
+@include media.L {
+    .catalogue {
+        &__slide {
+            flex-basis: calc((100% - 3 * var(--size_24)) / 4);
+        }
+    }
+}

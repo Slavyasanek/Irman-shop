@@ -1,0 +1,23 @@
+{
+    "name": "acf/image-content-section",
+    "title": "Зображення та текст",
+    "category": "irman",
+    "keywords": [
+        "заголовок"
+    ],
+    "icon": "slides",
+    "apiVersion": 3,
+    "style": "file:../../build/css/block-image-content-section.css",
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

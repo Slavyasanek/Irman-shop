@@ -1,0 +1,39 @@
+@use "../utils/media";
+@use "../utils/mixins";
+
+.mob-menu {
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    padding: 55.8vw 4.44vw 39.44vw;
+    z-index: 3;
+    @include mixins.el-hide;
+    pointer-events: none;
+    transform: translateY(-20%);
+
+    &__menu {
+        a {
+            display: block;
+            line-height: 1.5;
+            padding-block: var(--size_14);
+        }
+    }
+
+    &__icons {
+        gap: var(--size_20);
+    }
+
+    &.active {
+        @include mixins.el-show;
+        pointer-events: all;
+        transform: translateY(0%);
+    }
+}
+// End inner
+
+@include media.M {
+    .mob-menu {
+        padding: 22.2vw 2.5vw;
+    }
+    // End inner
+}
+// End M
