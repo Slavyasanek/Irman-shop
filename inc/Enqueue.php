@@ -53,13 +53,13 @@ class Enqueue {
         // select2 ??
 
         
-        $theme_version = wp_get_theme()->get('Version');
+        // $theme_version = wp_get_theme()->get('Version');
         // Main Stylesheet
         wp_enqueue_style(
             'clean-theme-style',
             get_template_directory_uri() . '/build/css/style.css',
             [],
-            $theme_version
+            filemtime(get_template_directory_uri() . '/build/css/style.css')
         );
         // Main Script (In footer, no dependencies)
         wp_register_script( 'clean-theme-data', false );
@@ -80,7 +80,7 @@ class Enqueue {
             'clean-theme-js',
             get_template_directory_uri() . '/build/js/main.js',
             [],
-            $theme_version,
+            filemtime(get_template_directory_uri() . '/build/js/main.js'),
             array(
                 'in_footer' => true
             )
@@ -92,14 +92,14 @@ class Enqueue {
                     'product-theme-style',
                     get_template_directory_uri() . '/build/css/product-page.css',
                     [],
-                    $theme_version
+                    filemtime(get_template_directory_uri() . '/build/css/product-page.css')
                 );
 
                 wp_enqueue_script(
                     'product-page-js',
                     get_template_directory_uri() . '/build/js/product-page-js.js',
                     [],
-                    $theme_version,
+                    filemtime(get_template_directory_uri() . '/build/js/product-page-js.js'),
                     array(
                         'in_footer' => true
                     )
@@ -107,42 +107,52 @@ class Enqueue {
             }
         }
 
+        if (function_exists('is_shop') && function_exists('is_product_category')) {
+            if (is_shop() || is_product_category()) {
+                wp_enqueue_style(
+                    'shop-theme-style',
+                    get_template_directory_uri() . '/build/css/shop.css',
+                    [],
+                    filemtime(get_template_directory_uri() . '/build/css/shop.css')
+                );
+            }
+        }        
         
-        if (is_shop() || is_product_category()) {
-            wp_enqueue_style(
-                'shop-theme-style',
-                get_template_directory_uri() . '/build/css/shop.css',
-                [],
-                $theme_version
-            );
+        if (function_exists('is_404')) {
+            if (is_404()) {
+                wp_enqueue_style(
+                    '404-style',
+                    get_template_directory_uri() . '/build/css/not-found.css',
+                    [],
+                    filemtime(get_template_directory_uri() . '/build/css/not-found.css')
+                );
+            }
         }
 
-        if (is_404()) {
-            wp_enqueue_style(
-                '404-style',
-                get_template_directory_uri() . '/build/css/not-found.css',
-                [],
-                $theme_version
-            );
+
+        if (function_exists('is_checkout')) {
+            if (is_checkout()) {
+                wp_enqueue_style(
+                    'checkout-style',
+                    get_template_directory_uri() . '/build/css/checkout.css',
+                    [],
+                    filemtime(get_template_directory_uri() . '/build/css/checkout.css')
+                );
+            }
         }
 
-        if (is_checkout()) {
-            wp_enqueue_style(
-                'checkout-style',
-                get_template_directory_uri() . '/build/css/checkout.css',
-                [],
-                $theme_version
-            );
+
+        if (function_exists('is_order_received_page')) {
+            if ( is_order_received_page() ) {
+                wp_enqueue_style(
+                    'thankyou-style',
+                    get_template_directory_uri() . '/build/css/thankyou.css',
+                    [],
+                    filemtime(get_template_directory_uri() . '/build/css/thankyou.css')
+                );
+            }
         }
 
-        if ( is_order_received_page() ) {
-            wp_enqueue_style(
-                'thankyou-style',
-                get_template_directory_uri() . '/build/css/thankyou.css',
-                [],
-                $theme_version
-            );
-        }
     }
 
     public function add_module_type_attribute($tag, $handle, $src) {

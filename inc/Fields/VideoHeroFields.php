@@ -27,13 +27,11 @@ class VideoHeroFields {
                 'label'        => 'Головний заголовок (H1)',
                 'delay'        => 0,
                 'required'     => 1,
-                'wrapper'      => ['width' => '50%'],
                 'rows' => 1,
                 'new_lines' => 'br'
             ])
             ->addText('pidzagolovok', [
                 'label'   => 'Підзаголовок (H2)',
-                'wrapper' => ['width' => '50%'],
             ])
 
             // --- Background Type Selector ---
@@ -53,7 +51,6 @@ class VideoHeroFields {
                 'label'         => 'Фонове зображення (Desktop)',
                 'return_format' => 'array',
                 'required'      => 1,
-                'wrapper'       => ['width' => '50%'],
             ])
                 ->conditional('type_fonu', '==', 'image')
 
@@ -61,7 +58,6 @@ class VideoHeroFields {
                 'label'         => 'Фонове зображення (Mobile)',
                 'return_format' => 'array',
                 'required'      => 1,
-                'wrapper'       => ['width' => '50%'],
             ])
                 ->conditional('type_fonu', '==', 'image')
 
@@ -72,7 +68,14 @@ class VideoHeroFields {
                 'return_format' => 'array',
                 'mime_types'    => 'mp4',
                 'required'      => 1,
-                'wrapper'       => ['width' => '50%'],
+            ])
+                ->conditional('type_fonu', '==', 'video')
+                
+            ->addImage('desktop_poster', [
+                'label'         => 'Постер для Desktop відео',
+                'instructions'  => 'Перший кадр відео для миттєвого завантаження (LCP)',
+                'return_format' => 'array',
+                'required'      => 1,
             ])
                 ->conditional('type_fonu', '==', 'video')
 
@@ -82,7 +85,14 @@ class VideoHeroFields {
                 'return_format' => 'array',
                 'mime_types'    => 'mp4',
                 'required'      => 1,
-                'wrapper'       => ['width' => '50%'],
+            ])
+                ->conditional('type_fonu', '==', 'video')
+                
+            ->addImage('mobile_poster', [
+                'label'         => 'Постер для Mobile відео',
+                'instructions'  => 'Перший кадр відео для миттєвого завантаження (LCP)',
+                'return_format' => 'array',
+                'required'      => 1,
             ])
                 ->conditional('type_fonu', '==', 'video')
 
@@ -91,13 +101,11 @@ class VideoHeroFields {
                 'label'         => 'Показувати першу кнопку (Посилання)',
                 'default_value' => 1,
                 'ui'            => 1,
-                'wrapper'       => ['width' => '50%'],
             ])
             ->addLink('first_btn_link', [
                 'label'         => 'Посилання та текст першої кнопки',
                 'instructions'  => 'Якщо залишити порожнім — за замовчуванням виведеться "Каталог" з посиланням на ID 27',
                 'return_format' => 'array',
-                'wrapper'       => ['width' => '50%'],
             ])
                 ->conditional('show_first_btn', '==', 1)
 
@@ -105,12 +113,10 @@ class VideoHeroFields {
                 'label'         => 'Показувати другу кнопку (Модалка)',
                 'default_value' => 1,
                 'ui'            => 1,
-                'wrapper'       => ['width' => '50%'],
             ])
             ->addText('second_btn_text', [
                 'label'         => 'Текст другої кнопки',
                 'default_value' => 'Індивідуальне замовлення',
-                'wrapper'       => ['width' => '50%'],
             ])
                 ->conditional('show_second_btn', '==', 1);
 

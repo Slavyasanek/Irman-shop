@@ -23,14 +23,18 @@ class VideoContentFields {
                 'return_format' => 'value',
             ])
 
-
-
             // --- Video Fields ---
             ->addFile('video_file', [
                 'label'         => 'Файл відео (MP4)',
                 'instructions'  => 'Завантажте відео у форматі MP4',
                 'return_format' => 'array',
                 'mime_types'    => 'mp4',
+                'required'      => 1,
+            ])
+            ->addImage('video_poster', [
+                'label'         => 'Постер для відео',
+                'instructions'  => 'Зображення, яке відображається до початку відтворення',
+                'return_format' => 'array',
                 'required'      => 1,
             ])
 
@@ -41,8 +45,8 @@ class VideoContentFields {
             ])
             ->addTextarea('text', [
                 'label'        => 'Основний текст',
-                'new_lines' => 'wpautop',
-                'rows' => 5,
+                'new_lines'    => 'wpautop',
+                'rows'         => 5,
                 'wrapper'      => ['width' => '100%'],
             ])
 

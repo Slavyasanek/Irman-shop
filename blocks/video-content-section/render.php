@@ -26,11 +26,11 @@ if ( ! empty( $block['className'] ) ) {
 // ACF Fields
 $video_position = get_field( 'video_position' ) ?: 'left';
 $video_file     = get_field( 'video_file' );
+$video_poster   = get_field( 'video_poster' );
 $title          = get_field( 'title' );
 $text           = get_field( 'text' );
 $show_button    = get_field( 'show_button' );
 $button_link    = get_field( 'button_link' );
-
 
 ?>
 
@@ -40,6 +40,7 @@ $button_link    = get_field( 'button_link' );
         <div class="flower abs c--accent video-content__flower video-content__flower--bottom sq--64">
             <?= Helpers::get_svg_icon('flower', 'wh-full') ?>
         </div>
+        
         <div class="video-content__content w-full o-hid">
             <?php if ( ! empty( $title ) ) : ?>
                 <h2 class="video-content__title mb--24 ff--title section-title"><?= $title ?></h2>
@@ -70,11 +71,12 @@ $button_link    = get_field( 'button_link' );
         <?php if ( ! empty( $video_file['url'] ) ) : ?>
             <div class="video-content__video o-hid shrink0">
                 <video 
-                    autoplay 
                     muted 
                     loop 
                     playsinline 
-                    preload="metadata"
+                    preload="none"
+                    data-lazy-video
+                    <?php if (!empty($video_poster['url'])) echo 'poster="' . esc_url($video_poster['url']) . '"'; ?>
                     class="contain-image">
                     <source src="<?php echo esc_url( $video_file['url'] ); ?>" type="video/mp4">
                     Ваш браузер не підтримує відео.
