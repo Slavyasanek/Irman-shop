@@ -46,7 +46,7 @@ $second_btn_text  = get_field('second_btn_text') ?: 'Індивідуальне 
 
         <?php if ($bg_type === 'video'): ?>
             <?php if (!empty($mobile_vid['url'])): ?>
-                <?= var_dump($mobile_vid) ?>
+
                 <div class="hero-video__mobile hero-video__video abs inset wh-full hide-desktop">
                     <video class="abs inset cover-image" 
                            autoplay loop muted playsinline preload="auto" 
