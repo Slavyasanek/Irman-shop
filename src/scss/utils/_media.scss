@@ -7,6 +7,10 @@
   @media screen and (min-width: 960px) {@content};
 }
 
+@mixin max-L {
+    @media screen and (max-width: 959px) {@content};
+}
+
 @mixin XL() {
   @media screen and (min-width: 1440px) {@content};
 }

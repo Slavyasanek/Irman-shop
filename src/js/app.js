@@ -22,6 +22,27 @@ document.addEventListener("DOMContentLoaded", () => {
     drawerEl.addEventListener(CART_EVENTS.ITEM_ADDED, (e) => {
         modalHandler.openModal(cart.drawer)
     });
+
+    if (document.querySelector('[data-lazy-video]')) {
+        const lazyVideos = document.querySelectorAll('video[data-lazy-video]');
+        
+        if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        let video = entry.target;
+                        video.preload = "auto";
+                        video.play();
+                        videoObserver.unobserve(video);
+                    }
+                });
+            });
+
+            lazyVideos.forEach((video) => {
+                videoObserver.observe(video);
+            });
+        }
+    }
 });
 
 

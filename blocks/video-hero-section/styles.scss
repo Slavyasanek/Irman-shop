@@ -1,14 +1,10 @@
 @use "../../src/scss/utils/media";
 
 .hero-video {
-    height: calc(100vh - var(--header-height));
-
-    &__mobile + &__desktop {
-        display: none;
-    }
+    min-height: calc(100vh - var(--header-height));
+    padding-block: var(--size_64);
 
     &__overlay {
-        // background: rgba(255, 255, 255, 0.35);
         background-color: rgba(3, 3, 3, 0.75);
     }
 
@@ -36,19 +32,15 @@
     &__btn {
         padding: var(--size_12);
     }
-
-    &__actions {
-        gap: var(--size_24);
-    }
 }
 
 .hero-video--h {
     &_70 {
-        height: calc(70vh - var(--header-height));
+        min-height: calc(70vh - var(--header-height));
     }
 
     &_50 {
-        height: calc(50vh - var(--header-height));
+        min-height: calc(50vh - var(--header-height));
     }
 }
 // End by HEIGHT
@@ -60,13 +52,14 @@
         }
     }
 }
+// End M
 
 @include media.L {
     .hero-video {
 
-        &__mobile + &__desktop {
-            display: block;
-        }
+        // &__mobile + &__desktop {
+        //     display: block;
+        // }
 
         &__title, &__subtitle {
             text-align: center;

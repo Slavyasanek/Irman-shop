@@ -22,7 +22,9 @@ $mobile_img = get_field('mobile_image');
 
 // Video Fields
 $desktop_vid = get_field('desktop_video');
+$desktop_poster = get_field('desktop_poster');
 $mobile_vid = get_field('mobile_video');
+$mobile_poster = get_field('mobile_poster');
 
 // Button 1 logic
 $show_first_btn  = get_field('show_first_btn');
@@ -37,59 +39,68 @@ $show_second_btn  = get_field('show_second_btn');
 $second_btn_text  = get_field('second_btn_text') ?: 'Індивідуальне замовлення';
 ?>
 
-<section class="hero-video rel o-hid c--white hero-video--h_<?= $section_height ?>" <?php echo get_block_wrapper_attributes(); ?>>
+<section class="hero-video rel o-hid c--white d-flex hero-video--h_<?= $section_height ?>" <?php echo get_block_wrapper_attributes(); ?>>
 
     <!-- Background Wrapper -->
     <div class="hero-video__bg abs inset wh-full z0" aria-hidden="true">
 
         <?php if ($bg_type === 'video'): ?>
             <?php if (!empty($mobile_vid['url'])): ?>
-                <!-- Mobile Video Container -->
+                <?= var_dump($mobile_vid) ?>
                 <div class="hero-video__mobile hero-video__video abs inset wh-full hide-desktop">
-
-                    <video class="abs inset cover-image" autoplay loop muted playsinline preload="metadata" fetchpriority=high>
+                    <video class="abs inset cover-image" 
+                           autoplay loop muted playsinline preload="auto" 
+                           poster="<?= !empty($mobile_poster['url']) ? esc_url($mobile_poster['url']) : ''; ?>"
+                           height="<?= $mobile_vid['height'] ?>"
+                           width="360"
+                           >
+                            Sorry, your browser doesn't support embedded videos
                         <source src="<?= esc_url($mobile_vid['url']); ?>" type="video/mp4" >
                     </video>
-
                 </div>
             <?php endif; ?>
+            
             <?php if (!empty($desktop_vid['url'])): ?>
-                <!-- Desktop Video Container -->
+
                 <div class="hero-video__desktop hero-video__video abs inset wh-full hide-mobile">
-                    <video class="abs inset cover-image" autoplay loop muted playsinline preload="metadata" fetchpriority=high>
+                    <video class="abs inset cover-image" 
+                           autoplay loop muted playsinline preload="auto" 
+                           poster="<?= !empty($desktop_poster['url']) ? esc_url($desktop_poster['url']) : ''; ?>"
+                           height="720"
+                           width="1920"
+                           >
+                            Sorry, your browser doesn't support embedded videos
                         <source src="<?= esc_url($desktop_vid['url']); ?>" type="video/mp4">
                     </video>
                 </div>
             <?php endif; ?>
 
-
-
         <?php else: ?>
 
 
-            <?php if (!empty($mobile_img)): ?>
-            <!-- Mobile Image Container -->
-            <div class="hero-video__mobile abs inset wh-full hide-desktop">
-                <picture class="wh-full d-block">
-                    <?= wp_get_attachment_image($mobile_img['id'], 'mobile', false, [
-                        'class' => 'cover-image ',
-                        'fetchpriority' => 'high',
-                    ]); ?>
-                </picture>
-            </div>
-            <?php endif; ?>
-
-            <?php if (!empty($desktop_img)): ?>
-                <!-- Desktop Image Container -->
-                <div class="hero-video__desktop abs inset wh-full hide-mobile">
-
+            <?php if (!empty($mobile_img) || !empty($desktop_img)): ?>
+                <div class="hero-video__img abs inset wh-full">
                     <picture class="wh-full d-block">
-                        <?= wp_get_attachment_image($desktop_img['id'], 'full', false, [
-                            'class' => 'cover-image',
-                            'fetchpriority' => 'high',
-                        ]); ?>
-                    </picture>
+                        <?php if (!empty($desktop_img)): ?>
+                            <source media="(min-width: 960px)" srcset="<?= esc_url($desktop_img['url']); ?>">
+                        <?php endif; ?>
 
+                        <?php 
+
+                        $fallback_img = !empty($mobile_img) ? $mobile_img : $desktop_img; 
+                        if ($fallback_img): 
+                        ?>
+
+                            <img src="<?= esc_url($fallback_img['url']); ?>" 
+                                 alt="<?= esc_attr($title); ?>" 
+                                 class="cover-image wh-full" 
+                                 fetchpriority="high" 
+                                 decoding="sync"
+                                 width="360"
+                                 height="330"
+                                 >
+                        <?php endif; ?>
+                    </picture>
                 </div>
             <?php endif; ?>
 
@@ -100,7 +111,7 @@ $second_btn_text  = get_field('second_btn_text') ?: 'Індивідуальне 
     </div>
 
     <!-- Content Layer -->
-    <div class="container hero-video__container flex-center h-full rel z1">
+    <div class="container hero-video__container flex-center h-full rel z1 my">
         <div class="hero-video__content-block rel">
             <?php if ($title): ?>
                 <h1 class="hero-video__title ff--title"><?= $title ?></h1>
@@ -113,7 +124,7 @@ $second_btn_text  = get_field('second_btn_text') ?: 'Індивідуальне 
             <?php endif; ?>
 
             <?php if ($show_first_btn || $show_second_btn): ?>
-                <div class="hero-video__actions mt--32 l-mt--48 flex-col">
+                <div class="hero-video__actions mt--32 l-mt--48 flex-col gap--24">
                     
                     <?php if ($show_first_btn): ?>
                         <a class="btn btn--full_accent hero-video__btn text--btn-m w-full d-block rel o-hid"

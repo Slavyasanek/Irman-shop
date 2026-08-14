@@ -142,6 +142,10 @@ svg {
     margin-inline: auto;
 }
 
+.my {
+    margin-block: auto;
+}
+
 .m-0 {
     margin: 0;
 }
@@ -199,6 +203,14 @@ svg {
     inset-block-start: 50%;
     inset-inline-start: 50%;
     transform: translate(-50%, -50%);
+}
+
+@include media.max-L {
+    .hide-mobile {
+        display: none;
+        pointer-events: none;
+        @include mixins.el-hide;
+    }
 }
 
 @include media.L {

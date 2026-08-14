@@ -1,0 +1,23 @@
+@use "../utils/media";
+
+$gap-sizes: 24;
+
+.gap {
+    @each $size in $gap-sizes {
+        &--#{$size} {
+            gap: var(--size_#{$size});
+        }
+    }
+}
+
+
+// @include media.L {
+//     .l-mb {
+//         @each $size in $gap-sizes {
+//             &--#{$size} {
+//                 margin-block-end: var(--size_#{$size});
+//             }
+//         }
+//     }
+
+// }

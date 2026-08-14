@@ -1,7 +1,7 @@
 @use "../utils/media";
 @use "../utils/mixins";
 
-.breadcrumbs + section, .breadcrumbs + article {
+.breadcrumbs + section:not(.hero, .hero-video), .breadcrumbs + article {
     padding-block-start: 0;
 }
 
