@@ -8,7 +8,7 @@
     "icon": "slides",
     "apiVersion": 3,
     "style": "file:../../build/css/block-hero-section.css",
-    "script": "file:../../build/js/hero-section-js.js",
+    "viewScript": "file:../../build/js/hero-section-js.js",
     "acf": {
         "mode": "edit",
         "renderTemplate": "render.php"

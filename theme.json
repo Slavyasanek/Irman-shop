@@ -35,38 +35,46 @@
                             "fontFamily": "Montserrat",
                             "fontWeight": "400",
                             "fontStyle": "normal",
-                            "src": [ "file:./src/fonts/Montserrat-Regular.ttf" ]
+                            "src": [ "file:./build/fonts/Montserrat-Regular.ttf" ]
                         },
                         {
                             "fontFamily": "Montserrat",
                             "fontWeight": "400",
                             "fontStyle": "italic",
-                            "src": [ "file:./src/fonts/Montserrat-Italic.ttf" ]
+                            "src": [ "file:./build/fonts/Montserrat-Italic.ttf" ]
                         },
                         {
                             "fontFamily": "Montserrat",
                             "fontWeight": "500",
                             "fontStyle": "normal",
-                            "src": [ "file:./src/fonts/Montserrat-Medium.ttf" ]
+                            "src": [ "file:./build/fonts/Montserrat-Medium.ttf" ]
                         },
                         {
                             "fontFamily": "Montserrat",
                             "fontWeight": "500",
                             "fontStyle": "italic",
-                            "src": [ "file:./src/fonts/Montserrat-MediumItalic.ttf" ]
+                            "src": [ "file:./build/fonts/Montserrat-MediumItalic.ttf" ]
                         },
                         {
-                            "fontFamily": "Montserrat",
+                            "fontFamily": "Montserrat, sans-serif",
                             "fontWeight": "600",
                             "fontStyle": "normal",
-                            "src": [ "file:./src/fonts/Montserrat-SemiBold.ttf" ]
+                            "src": [ "file:./build/fonts/Montserrat-SemiBold.ttf" ]
                         }
                     ]
                 },
                 {
-                    "fontFamily": "\"Segoe Script\", sans-serif",
+                    "fontFamily": "\"Segoe Script\", \"Montserrat\",  sans-serif",
                     "slug": "title",
-                    "name": "Title (Segoe Script)"
+                    "name": "Title (Segoe Script)",
+                    "fontFace": [
+                        {
+                            "fontFamily": "Montserrat",
+                            "fontWeight": "600",
+                            "fontStyle": "normal",
+                            "src": ["file:./build/fonts/Segoe_Script.woff"]
+                        }
+                    ]
                 }
             ]
         }

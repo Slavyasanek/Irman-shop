@@ -96,7 +96,7 @@ use CleanTheme\Helpers;
                     </button>
                 <?php endif; ?>
 
-                <button class="btn flex-center header__cart-btn cart-btn rel sq--32" 
+                <button class="btn flex-center header__cart-btn cart-btn rel sq--32 c--black" 
                         data-cart="<?= WC()->cart->get_cart_contents_count() ?>" 
                         type="button" 
                         aria-label="Кошик"

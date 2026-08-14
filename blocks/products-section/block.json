@@ -6,7 +6,7 @@
     "icon": "screenoptions",
     "apiVersion": 3,
     "style": "file:../../build/css/block-products-section.css",
-    "script": "file:../../build/js/product-section-js.js",
+    "viewScript": "file:../../build/js/product-section-js.js",
     "acf": {
         "mode": "edit",
         "renderTemplate": "render.php"
