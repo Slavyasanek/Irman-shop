@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { globSync } from 'glob';
 import browserSync from 'browser-sync';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 const root = process.cwd();
 
@@ -116,6 +117,7 @@ export default defineConfig(({ mode }) => {
     const isProduction = mode === 'production';
 
     return {
+        base: './',
         build: {
             outDir: 'build',
 
@@ -140,7 +142,7 @@ export default defineConfig(({ mode }) => {
 
                         const fontExts = ['.ttf', '.woff', '.woff2', '.eot', '.otf'];
                         if (fontExts.some(ext => assetInfo.name?.endsWith(ext))) {
-                            return 'css/fonts/[name][extname]';
+                            return 'fonts/[name][extname]';
                         }
 
                         return 'assets/[name][extname]';
@@ -156,6 +158,17 @@ export default defineConfig(({ mode }) => {
         plugins: [
             removeEmptyCssJs(),
             browserSyncPlugin(),
+            viteStaticCopy({
+                targets: [
+                    {
+                        src: 'src/fonts/*',
+                        dest: 'fonts/',
+                        rename: {
+                            stripBase: 2,
+                        }
+                    },
+                ],
+            }),
         ],
     };
 });
