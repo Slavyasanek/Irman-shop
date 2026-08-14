@@ -30,6 +30,7 @@ class ThemeOptionsFields
             ])
             ->setWidth('50')
 
+            // --- Tab: Modal ---
             ->addTab('Модальне вікно замовлення', [
                 'placement' => 'left',
             ])
@@ -85,7 +86,7 @@ class ThemeOptionsFields
             ->setWidth('50')
 
             // --- Tab: Telegram ---
-            ->addTab('Telegram Tab', [ // Label changed slightly to avoid slug conflict with the group
+            ->addTab('Telegram Tab', [
                 'label' => 'Telegram',
                 'placement' => 'left',
             ])
@@ -102,6 +103,45 @@ class ThemeOptionsFields
             ])
             ->setWidth('50')
             ->endGroup()
+
+            // --- Tab: Scripts & Analytics ---
+            ->addTab('Скрипти та аналітика', [
+                'label' => 'Скрипти / Аналітика',
+                'placement' => 'left',
+            ])
+            ->addRepeater('kastomni_skrypty', [
+                'label' => 'Кастомні скрипти',
+                'button_label' => 'Додати скрипт',
+                'layout' => 'block',
+            ])
+                ->addText('title', [
+                    'label' => 'Назва скрипту',
+                    'placeholder' => 'напр. Google Analytics 4',
+                ])
+                ->setWidth('40')
+                ->addSelect('location', [
+                    'label' => 'Місце виводу',
+                    'choices' => [
+                        'header' => 'Header (<head>)',
+                        'footer' => 'Footer (перед </body>)',
+                    ],
+                    'default_value' => 'header',
+                ])
+                ->setWidth('30')
+                ->addSelect('load_strategy', [
+                    'label' => 'Стратегія завантаження',
+                    'choices' => [
+                        'immediate' => 'Прямий вивід (одразу)',
+                        'delayed'   => 'Відкладено (взаємодія / таймер 3.5с)',
+                    ],
+                    'default_value' => 'delayed',
+                ])
+                ->setWidth('30')
+                ->addTextarea('code', [
+                    'label' => 'Код скрипту (HTML / <script>)',
+                    'rows' => 5,
+                ])
+            ->endRepeater()
 
             // Location Settings
             ->setLocation('options_page', '==', 'site_option');

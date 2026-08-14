@@ -22,3 +22,4 @@ new \CleanTheme\Components\Cart();
 new \CleanTheme\ImageSizes();
 new \CleanTheme\WooScripts();
 new \CleanTheme\Telegram_Order_Notifier();
+new \CleanTheme\CustomScripts();
