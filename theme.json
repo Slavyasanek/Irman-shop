@@ -49,18 +49,21 @@
                             "fontFamily": "Montserrat",
                             "fontWeight": "500",
                             "fontStyle": "normal",
+                            "fontDisplay": "swap",
                             "src": [ "file:./build/fonts/Montserrat-Medium.ttf" ]
                         },
                         {
                             "fontFamily": "Montserrat",
                             "fontWeight": "500",
                             "fontStyle": "italic",
+                            "fontDisplay": "swap",
                             "src": [ "file:./build/fonts/Montserrat-MediumItalic.ttf" ]
                         },
                         {
                             "fontFamily": "Montserrat, sans-serif",
                             "fontWeight": "600",
                             "fontStyle": "normal",
+                            "fontDisplay": "swap",
                             "src": [ "file:./build/fonts/Montserrat-SemiBold.ttf" ]
                         }
                     ]
