@@ -50,6 +50,7 @@ $second_btn_text  = get_field('second_btn_text') ?: 'Індивідуальне 
                 <div class="hero-video__mobile hero-video__video abs inset wh-full hide-desktop">
                     <video class="abs inset cover-image" 
                            autoplay loop muted playsinline preload="auto" 
+                           fetchpriority="high" 
                            poster="<?= !empty($mobile_poster['url']) ? esc_url($mobile_poster['url']) : ''; ?>"
                            height="<?= $mobile_vid['height'] ?>"
                            width="360"
@@ -65,6 +66,7 @@ $second_btn_text  = get_field('second_btn_text') ?: 'Індивідуальне 
                 <div class="hero-video__desktop hero-video__video abs inset wh-full hide-mobile">
                     <video class="abs inset cover-image" 
                            autoplay loop muted playsinline preload="auto" 
+                           fetchpriority="high" 
                            poster="<?= !empty($desktop_poster['url']) ? esc_url($desktop_poster['url']) : ''; ?>"
                            height="720"
                            width="1920"

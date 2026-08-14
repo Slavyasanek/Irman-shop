@@ -14,7 +14,6 @@
     }
 
     &__inner {
-        gap: var(--size_20);
         width: fit-content;
     }
 
@@ -27,6 +26,10 @@
 
         &.active {
             pointer-events: none;
+        }
+
+        svg {
+            transform: rotate(180deg);
         }
 
     }
@@ -54,3 +57,17 @@
     }
 }
 // End M
+
+@include media.L {
+    .tabs {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+
+        &__inner {
+            row-gap: var(--size_10);
+            flex-wrap: wrap;
+        }
+    }
+}
+// End L

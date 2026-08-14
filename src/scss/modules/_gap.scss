@@ -1,6 +1,6 @@
 @use "../utils/media";
 
-$gap-sizes: 24;
+$gap-sizes: 8, 20, 24;
 
 .gap {
     @each $size in $gap-sizes {

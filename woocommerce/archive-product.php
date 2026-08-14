@@ -23,32 +23,40 @@ do_action( 'woocommerce_before_main_content' );
 
         <div class="tabs o-hid catalogue__tabs tabs--shop anim sticky bg--white z2">
 
-            <div class="tabs__inner flex-row rel">
+            <div class="tabs__inner flex-row rel gap--20">
                 <?php 
-                $terms = get_terms(array('taxonomy' => 'product_cat', 'hide_empty' => true));
-                $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
-                $current_obj = get_queried_object();
                 $is_shop = is_shop() || is_post_type_archive('product');
+                $is_tag = is_product_tag(); // Check if we are on a product tag page
+                $current_obj = get_queried_object();
+                $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+
+                // Switch taxonomy based on the current page type
+                $taxonomy = $is_tag ? 'product_tag' : 'product_cat';
+                $terms = get_terms(array('taxonomy' => $taxonomy, 'hide_empty' => true));
                 ?>
 
-                <a href="<?= esc_url($shop_page_url) ?>" class="btn tabs__item <?= $is_shop ? 'active' : '' ?>">
+                <a href="<?= esc_url($shop_page_url) ?>" class="btn tabs__item <?= $is_shop ? 'active' : '' ?> <?php if ($is_tag):?> flex-row gap--8 mb--16 <?php endif;?>">
+                    <?= Helpers::get_svg_icon('arrow-back', 'sq--16') ?>
                     Всі товари
                 </a>
                 
-                <?php foreach ($terms as $term):
 
-                    $is_active = (!$is_shop && isset($current_obj->term_id) && $current_obj->term_id === $term->term_id) ? 'active' : '';
-                ?>
-                    <a href="<?= esc_url(get_term_link($term)) ?>" class="btn tabs__item <?= $is_active ?>">
-                        <?= esc_html($term->name) ?>
-                    </a>
-                <?php endforeach; ?>
+                <?php if (!$is_tag):?>
+                    <?php foreach ($terms as $term):
+                        // The active check works for both categories and tags since it compares term_id
+                        $is_active = (!$is_shop && isset($current_obj->term_id) && $current_obj->term_id === $term->term_id) ? 'active' : '';
+                    ?>
+                        <a href="<?= esc_url(get_term_link($term)) ?>" class="btn tabs__item <?= $is_active ?>">
+                            <?= esc_html($term->name) ?>
+                        </a>
+                    <?php endforeach; ?>
 
-                <div class="tabs__toggler bg--black anim abs"></div>
+                    <div class="tabs__toggler bg--black anim abs"></div>
+                <?php endif;?>
             </div>
         </div>
 
-        <ul class="grid grid--col_2-4 grid--gap_16-24 catalogue__products"> 
+        <ul class="grid grid--col_2-4 grid--gap_16-24 catalogue__products text--reg"> 
             <?php 
             if ( woocommerce_product_loop() ) :
 
