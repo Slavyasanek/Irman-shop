@@ -9,6 +9,7 @@
     "icon": "slides",
     "style": "file:../../build/css/block-video-hero-section.css",
     "acf": {
+        "mode": "preview",
         "renderTemplate": "render.php"
     },
     "example": {
