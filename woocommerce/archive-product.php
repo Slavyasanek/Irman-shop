@@ -1,6 +1,7 @@
 <?php
 
 use CleanTheme\Helpers;
+use CleanTheme\Components\PageTitle;
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive
  *
@@ -16,7 +17,20 @@ $paged = get_query_var('paged');
 
 // Outputs opening divs and breadcrumbs
 do_action( 'woocommerce_before_main_content' );
+
+$title = 'Каталог';
+$is_shop = is_shop() || is_post_type_archive('product');
+$is_tag = is_product_tag(); // Check if we are on a product tag page
+$current_obj = get_queried_object();
+$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+
+if (isset($current_obj)) {
+    $title = $current_obj->name ?? 'Каталог';
+}
 ?>
+
+
+<?= PageTitle::render($title) ?>
 
 <section class="catalogue catalogue--shop section--pt_S section--pb_S">
     <div class="container rel"> 
@@ -25,10 +39,7 @@ do_action( 'woocommerce_before_main_content' );
 
             <div class="tabs__inner flex-row rel gap--20">
                 <?php 
-                $is_shop = is_shop() || is_post_type_archive('product');
-                $is_tag = is_product_tag(); // Check if we are on a product tag page
-                $current_obj = get_queried_object();
-                $shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+                
 
                 // Switch taxonomy based on the current page type
                 $taxonomy = $is_tag ? 'product_tag' : 'product_cat';
@@ -36,7 +47,9 @@ do_action( 'woocommerce_before_main_content' );
                 ?>
 
                 <a href="<?= esc_url($shop_page_url) ?>" class="btn tabs__item <?= $is_shop ? 'active' : '' ?> <?php if ($is_tag):?> flex-row gap--8 mb--16 <?php endif;?>">
-                    <?= Helpers::get_svg_icon('arrow-back', 'sq--16') ?>
+                    <?php if ($is_tag):?>
+                        <?= Helpers::get_svg_icon('arrow-back', 'sq--16') ?>
+                    <?php endif;?>
                     Всі товари
                 </a>
                 

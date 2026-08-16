@@ -1,0 +1,23 @@
+{
+    "name": "acf/cta-block-section",
+    "title": "Текст з кнопками",
+    "category": "irman",
+    "apiVersion": 3,
+    "keywords": [
+        "заголовок"
+    ],
+    "icon": "slides",
+    "style": "file:../../build/css/block-cta-block-section.css",
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "example": {
+        "attributes": {
+            "mode": "preview",
+            "data": {
+                "_is_inserter_preview": true
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@use "../utils/media";
+
+.page-title {
+    padding-block: var(--size_16);
+
+    & + .catalogue {
+        padding-block-start: var(--size_20);
+    }
+}
