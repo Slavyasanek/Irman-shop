@@ -10,7 +10,7 @@ const root = process.cwd();
 function getEntries() {
     const entries = {
         main: path.resolve(root, 'src/js/app.js'),
-
+        critical: path.resolve(root, 'src/scss/critical.scss'),
         style: path.resolve(root, 'src/scss/index.scss'),
         'product-page': path.resolve(root, 'src/scss/product-page.scss'),
 
