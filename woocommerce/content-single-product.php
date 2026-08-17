@@ -27,8 +27,9 @@ $doglyad = get_field('doglyad', $product_id);
             <?= Helpers::get_svg_icon('flower', 'wh-full') ?>
         </div>
         <div class="container product-page__container grid">
+            <meta itemprop="url" content="<?= esc_url(get_permalink($product_id)) ?>" />
             
-            <h1 class="product-page__title t-w--500 text--h4 hide-desktop" itemprop="name"><?= esc_html($product_title) ?></h1>
+            <p class="product-page__title t-w--500 text--h4 hide-desktop m-0"><?= esc_html($product_title) ?></p>
 
             <div class="product-slider product-page__slider">
                 <!-- Embla Main Slider -->

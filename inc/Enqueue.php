@@ -10,6 +10,8 @@ class Enqueue {
         add_action('after_setup_theme', [$this, 'theme_support']);
         add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
         add_filter('script_loader_tag', [$this, 'add_module_type_attribute'], 10, 3);
+        add_action('wp_head', [$this, 'images_preload']);
+        add_action('wp_head', [$this, 'critical_css'], 1);
 
         // Dequeue WooCommerce styles that are incorrectly injected into the block editor iframe.
         add_action('enqueue_block_editor_assets', [$this, 'dequeue_editor_styles'], 99);
@@ -30,6 +32,7 @@ class Enqueue {
         wp_dequeue_script( 'wc-cart-fragments' );
         wp_dequeue_script( 'jquery-blockui' );
         wp_dequeue_script( 'woocommerce' );
+        wp_deregister_style('wc-blocks-style');
     }
 
     public function dequeue_editor_styles() {
@@ -155,10 +158,83 @@ class Enqueue {
 
     }
 
+    public function critical_css() {
+        $critical_css_path = get_template_directory() . '/build/css/critical.css'; 
+        if (file_exists($critical_css_path)) {
+            $critical_css = file_get_contents($critical_css_path);
+            if (!empty($critical_css)) {
+                echo '<style id="critical-css">' . $critical_css . '</style>' . "\n";
+            }
+        }
+    }
+
     public function add_module_type_attribute($tag, $handle, $src) {
         if (in_array($handle, ['clean-theme-js', 'product-page-js', 'shop-js', 'acf-products-section-view-script'], true) || str_starts_with($handle, 'block-')) {
             return '<script type="module" src="' . esc_url($src) . '" id="' . $handle . '"></script>';
         }
         return $tag;
+    }
+
+    public function images_preload() {
+        if (!is_singular() || !has_blocks()) {
+            return;
+        }
+
+        $post = get_post();
+        $blocks = parse_blocks($post->post_content);
+
+        foreach ($blocks as $block) {
+
+            if ($block['blockName'] === 'acf/video-hero-section') {
+               
+                $data = !empty($block['attrs']['data']) ? $block['attrs']['data'] : [];
+                $bg_type = !empty($data['type_fonu']) ? $data['type_fonu'] : 'video';
+                $get_url = function($field_key) use ($data) {
+                    if (empty($data[$field_key])) {
+                        return '';
+                    }
+                    $val = $data[$field_key];
+                    
+
+                    if (is_array($val) && !empty($val['url'])) {
+                        return $val['url'];
+                    }
+
+                    if (is_numeric($val)) {
+                        return wp_get_attachment_image_url($val, 'full');
+                    }
+
+                    if (is_string($val) && filter_var($val, FILTER_VALIDATE_URL)) {
+                        return $val;
+                    }
+                    return '';
+                };
+
+                if ($bg_type === 'video') {
+                    $mobile_poster_url  = $get_url('mobile_poster');
+                    $desktop_poster_url = $get_url('desktop_poster');
+
+                    if ($mobile_poster_url) {
+                        echo '<link rel="preload" as="image" href="' . esc_url($mobile_poster_url) . '" media="(max-width: 959px)" fetchpriority="high" />' . "\n";
+                    }
+                    if ($desktop_poster_url) {
+                        echo '<link rel="preload" as="image" href="' . esc_url($desktop_poster_url) . '" media="(min-width: 960px)" fetchpriority="high" />' . "\n";
+                    }
+                } else {
+                    $mobile_img_url  = $get_url('mobile_image');
+                    $desktop_img_url = $get_url('desktop_image');
+
+                    if ($mobile_img_url) {
+                        echo '<link rel="preload" as="image" href="' . esc_url($mobile_img_url) . '" media="(max-width: 959px)" fetchpriority="high" />' . "\n";
+                    }
+                    if ($desktop_img_url) {
+                        echo '<link rel="preload" as="image" href="' . esc_url($desktop_img_url) . '" media="(min-width: 960px)" fetchpriority="high" />' . "\n";
+                    }
+                }
+
+                // Stop after the first hero block is found
+                break;
+            }
+        }
     }
 }
