@@ -156,7 +156,7 @@ class Enqueue {
     }
 
     public function add_module_type_attribute($tag, $handle, $src) {
-        if (in_array($handle, ['clean-theme-js', 'product-page-js', 'shop-js', 'acf-products-section-script'], true) || str_starts_with($handle, 'block-')) {
+        if (in_array($handle, ['clean-theme-js', 'product-page-js', 'shop-js', 'acf-products-section-view-script'], true) || str_starts_with($handle, 'block-')) {
             return '<script type="module" src="' . esc_url($src) . '" id="' . $handle . '"></script>';
         }
         return $tag;
